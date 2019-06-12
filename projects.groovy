@@ -25,7 +25,7 @@ for (project in projects) {
         scm {
 
             //Adds a Git SCM source for a GitHub repository.
-            github($project.get('github'))
+            github(project.get('github'))
         }
     }
 }
