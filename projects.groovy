@@ -42,5 +42,12 @@ for (project in projects) {
             // Runs a shell script.
             shell(readFileFromWorkspace(project.value.release_script))
         }
+
+        // Adds post-build actions to the job.
+        publishers {
+
+            // Sends email notifications.
+            mailer('boss@somedomain.org me@somedomain.org')
+        }
     }
 }
