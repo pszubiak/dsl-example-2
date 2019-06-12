@@ -1,22 +1,22 @@
 def final projects = [
         'project-a': [
                 github: 'pszubiak/dsl-example-2',
-                release_script: 'scripts/release.sh'
+                nightly_script: 'scripts/nightly.sh'
         ],
 
         'project-b': [
                 github: 'pszubiak/dsl-example-2',
-                release_script: 'scripts/release.sh'
+                nightly_script: 'scripts/nightly.sh'
         ],
 
         'project-c': [
                 github: 'pszubiak/dsl-example-2',
-                release_script: 'scripts/release.sh'
+                nightly_script: 'scripts/nightly.sh'
         ],
 
         'project-d': [
                 github: 'pszubiak/dsl-example-2',
-                release_script: 'scripts/release.sh'
+                nightly_script: 'scripts/nightly.sh'
         ]
 ]
 
@@ -24,10 +24,10 @@ def final projects = [
 for (project in projects) {
 
     // Creates or updates a folder.
-    folder('release-jobs')
+    folder('nightly-jobs')
 
     // Creates or updates a free style job.
-    job("release-jobs/${project.key}-release-job") {
+    job("nightly-jobs/${project.key}-nightly-build") {
 
         // Allows a job to check out sources from an SCM provider.
         scm {
@@ -40,7 +40,7 @@ for (project in projects) {
         steps {
 
             // Runs a shell script.
-            shell(readFileFromWorkspace(project.value.release_script))
+            shell(readFileFromWorkspace(project.value.nightly_script))
         }
 
         // Adds post-build actions to the job.
