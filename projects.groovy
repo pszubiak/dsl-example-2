@@ -20,11 +20,10 @@ def final projects = [
         ]
 ]
 
+// Creates or updates a folder.
+folder('nightly-jobs')
 
 for (project in projects) {
-
-    // Creates or updates a folder.
-    folder('nightly-jobs')
 
     // Creates or updates a free style job.
     job("nightly-jobs/${project.key}-nightly-build") {
